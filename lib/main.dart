@@ -1,5 +1,6 @@
 import 'package:poo_exercises/utils/swim_utils.dart';
-
+import 'package:poo_exercises/weather/weather.dart';
+import 'models/adaptive_creature.dart';
 import 'models/animal.dart';
 import 'models/dragonfly.dart';
 import 'models/duck.dart';
@@ -54,4 +55,27 @@ void main() {
 
   print("Duck After Being Hunted");
   print(duck);
+
+  final weather = Weather();
+
+  final fox = AdaptiveCreature(name: "Fiona", species: "Fox");
+  final owl = AdaptiveCreature(name: "Oscar", species: "Owl");
+
+  weather.addObserver(fox);
+  weather.addObserver(owl);
+
+  fox.performAction();
+  owl.performAction();
+
+  weather.setWeather("rainy");
+  fox.performAction();
+  owl.performAction();
+
+  weather.setWeather("stormy");
+  fox.performAction();
+  owl.performAction();
+
+  weather.setWeather("sunny");
+  fox.performAction();
+  owl.performAction();
 }
