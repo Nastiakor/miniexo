@@ -1,21 +1,33 @@
-import 'forest_animal.dart';
+import 'models/animal.dart';
+import 'models/dragonfly.dart';
+import 'models/fish.dart';
+import 'models/frog.dart';
+import 'models/mosquito.dart';
+import 'models/snail.dart';
 
 void main() {
-  final fox = ForestAnimal(name: "Fiona", species: "Fox");
-  final owl = ForestAnimal(name: "Oscar", species: "Owl");
-  final beaver = ForestAnimal(name: "Benny", species: "Beaver");
+  final animals = <Animal>[
+    Frog(name: "Freddy"),
+    Fish(name: "Nemo"),
+    Dragonfly(name: "Daisy"),
+    Mosquito(name: "Buzz"),
+    Snail(name: "Shelly"),
+  ];
 
-  // Some actions
-  fox.gatherWood();
-  owl.standGuard();
-  beaver.restInDen();
+  print("Animals make their sounds");
+  for (var animal in animals) {
+    animal.makeSound();
+  }
 
-  fox.standGuard();
-  owl.gatherWood();
-  beaver.gatherWood();
+  print("\n=== Specific actions ===");
+  (animals[0] as Frog).jump();
+  (animals[1] as Fish).swim();
+  (animals[2] as Dragonfly).fly();
+  (animals[3] as Mosquito).bite();
+  (animals[4] as Snail).crawl();
 
-  // Print final energy
-  print(fox);
-  print(owl);
-  print(beaver);
+  print("\n=== Final energies ===");
+  for (var animal in animals) {
+    print(animal); // toString() automatique
+  }
 }
